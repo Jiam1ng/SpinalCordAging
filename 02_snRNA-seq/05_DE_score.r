@@ -1,11 +1,14 @@
+library(stringr)
+library(dplyr)
 
 setwd('E:/00_Project/04_SC/06_snRNA-seq_final/03_Seurat_MN/03_DEG/GO/')
 
 celltypes = c("OPC", "OL", "Schwann", "Fib.Ast", "Pro.Ast", 
-              "Microglia", "Ependymal", "Pericyte","EC", 
+              "Microglia", 'Macrophage', 'T_cells', 'ImmunOL', 
+              "Ependymal", "Pericyte","EC", 
               'MN', "CNTN4.IN", "RBFOX1.IN")
 
-deg = read.csv('E:/00_Project/04_SC/06_snRNA-seq_final/03_Seurat_MN/03_DEG/SC_snRNAseq_DEG.csv')
+deg = read.csv('E:/00_Project/04_SC/06_snRNA-seq_final/03_Seurat_MN/03_DEG/SC_snRNAseq_DEG_with_immune_cell.csv')
 deg$DE = ifelse(deg$avg_logFC>0, 'up', 'down')
 
 go.all = c()
