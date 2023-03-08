@@ -7,7 +7,7 @@ library(future)
 plan("multiprocess", workers = 5)
 immune = readRDS('immune_cell_seu_obj.rds')
 
-mic = state(immune, IC_type == 'Microglia')
+mic = subset(immune, IC_type == 'Microglia')
 mic = SCTransform(mic, verbose = T, variable.features.n = 500, assay='RNA')
 mic = RunPCA(mic, verbose=F)
 
